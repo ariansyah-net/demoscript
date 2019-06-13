@@ -37,7 +37,7 @@
       <div class="bg-white py-2 collapse-inner rounded">
 
         <a class="collapse-item" href="<?=base_url('dashboard/demoscript')?>">DemoScript</a>
-        <a class="collapse-item" href="">Category</a>
+        <a class="collapse-item" href="<?=base_url('dashboard/category')?>">Category</a>
       </div>
     </div>
   </li>
