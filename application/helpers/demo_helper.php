@@ -29,6 +29,15 @@ function fileFormError($field, $prefix = '', $suffix = '')
     return '';
 }
 
+
+    function tgl_indo($tgl){
+            $tanggal = substr($tgl,8,2);
+            $bulan = getBulan(substr($tgl,5,2));
+            $tahun = substr($tgl,0,4);
+            return $tanggal.' '.$bulan.' '.$tahun;
+    }
+
+
     function tanggal($tgl){
         $tanggal = substr($tgl,8,2);
         $bulan = getBulan(substr($tgl,5,2));
@@ -138,3 +147,11 @@ function check_time($datetime, $full = false) {
                  }
                  return $difftext;
     }
+
+    function slug($s) {
+            $c = array (' ');
+            $d = array ('-','/','\\',',','.','#',':',';','\'','"','[',']','{','}',')','(','|','`','~','!','@','%','$','^','&','*','=','?','+','–');
+            $s = str_replace($d, '', $s); // Hilangkan karakter yang telah disebutkan di array $d
+            $s = strtolower(str_replace($c, '-', $s)); // Ganti spasi dengan tanda - dan ubah hurufnya menjadi kecil semua
+            return $s;
+        }

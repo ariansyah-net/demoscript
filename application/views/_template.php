@@ -21,7 +21,7 @@
     <script src="<?=base_url('asset/js/popper.min.js')?>"></script>
     <script src="<?=base_url('asset/js/bootstrap.min.js')?>"></script>
 
-    <script type="text/javascript">s
+    <script type="text/javascript">
       $(function() {
          $('#flash').delay(500).slideDown('normal', function() {
             $(this).delay(2500).slideUp();

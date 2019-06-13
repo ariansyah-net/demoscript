@@ -16,13 +16,18 @@ if (isset($cat)) {
 
 <div class="row">
 <?php foreach ($ar as $hh): ?>
-<div class="card" style="width: 22rem; margin: 10px;">
-<a href="<?= $hh->category_slug ?>/<?= $hh->content_slug ?>">
-	<img src="<?= base_url('asset/img/noimage.png') ?>" class="card-img-top" alt="<?= $hh->content_title ?>">
-		</a>
+
+<div class="card m-2" style="width: 22rem;">
+<a href="<?=base_url()?><?= $hh->category_slug ?>/<?= $hh->content_slug ?>">
+
+  <?php if (!empty($hh->content_img)): ?>
+    <img src="<?= site_url("asset/post/$hh->content_img") ?>" class="card-img-top">
+  <?php else: ?> <img src="<?= site_url("asset/post/noimage.png") ?>" class="card-img-top">
+  			<?php endif ?>
+  		    </a>
 
 <div class="card-body">
-<h5 class="card-title"><a href="<?= $hh->category_slug ?>/<?= $hh->content_slug ?>"><?= $hh->content_title ?></a></h5>
+<h5 class="card-title"><a href="<?=base_url()?><?= $hh->category_slug ?>/<?= $hh->content_slug ?>"><?= $hh->content_title ?></a></h5>
 <p class="card-text"><?= $hh->content_main ?></p>
 <div class="d-flex justify-content-between align-items-center">
 <div class="btn-group">
