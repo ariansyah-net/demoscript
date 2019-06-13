@@ -7,7 +7,6 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
     $this->arLogin();
     $this->load->library('user_agent', 'url');
-		// $this->load->model('Login_model', 'login', true);
 	}
 
   protected function arLogin(){
@@ -35,6 +34,7 @@ class Dashboard extends CI_Controller {
     $this->load->view('admin/templates/index', $data);
 
   }
+	//==================== DEMOSCRIPT CRUD FUNCTION ==============================
 
   public function demoscript(){
     $data['title']    = 'Admin | DemoScript';
@@ -80,5 +80,47 @@ class Dashboard extends CI_Controller {
 
 	}
 
+
+//========================= CATEGORY CRUD FUNCTION =============================
+
+	public function category() {
+		$data['title']    	= 'Admin | Category Demo';
+    $data['main_view']  = 'admin/category/index';
+    $data['ar']    			= $this->demo_model->load_category();
+    $this->load->view('admin/templates/index', $data);
+	}
+
+	public function add_category() {
+		if (isset($_POST['submit'])){
+			$this->demo_model->category_add();
+			redirect('dashboard/category');
+		}else{
+      $data['title']      = 'Admin | Add DemoScript';
+      $data['main_view']  = 'admin/category/add';
+			$this->load->view('admin/templates/index', $data);
+		}
+  }
+
+	public function edit_category() {
+
+		$id = $this->uri->segment(3);
+		if (isset($_POST['submit'])){
+			$this->demo_model->category_update();
+			redirect('dashboard/category');
+		}else{
+			$data['title']      = 'Admin | Cange Category';
+			$data['main_view']  = 'admin/category/change';
+			$data['rows'] 			= $this->demo_model->category_edit($id)->row_array();
+			$this->load->view('admin/templates/index', $data);
+		}
+  }
+
+	public function remove_category(){
+		$id = $this->uri->segment(3);
+		$this->demo_model->delete_category($id);
+		$this->session->set_flashdata('info','<i class="fas fa-exclamation-circle"></i> Okey data removed..');
+		redirect('dashboard/category');
+
+	}
 
 }
