@@ -73,6 +73,29 @@
   }
 
 
+// Category Function
 
+  function load_category(){
+      return $this->db->query("SELECT * FROM category ORDER BY id_category DESC");
+  }
 
+  function category_add() {
+      $datadb = array('category_name'       => ($this->input->post('a')),
+                      'category_slug'       => slug($this->input->post('a')));
+      $this->db->insert('category',$datadb);
+  }
+
+  function category_update() {
+      $datadb = array('category_name'       => ($this->input->post('a')),
+                      'category_slug'       => slug($this->input->post('a')));
+      $this->db->where('id_category',$this->input->post('id'));
+      $this->db->update('category',$datadb);
+  }
+
+  function category_edit($id){
+      return $this->db->query("SELECT * FROM category where id_category='$id'");
+  }
+  function delete_category($id){
+      return $this->db->query("DELETE FROM category where id_category='$id'");
+  }
 }
