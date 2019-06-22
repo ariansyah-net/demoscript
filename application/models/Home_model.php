@@ -46,7 +46,8 @@ class Home_model extends MY_Model
       return $this->db->query("SELECT * FROM category a JOIN home b ON a.id_category=b.id_category WHERE a.id_category='".$this->db->escape_str($id)."' OR a.category_slug='".$this->db->escape_str($id)."'");
   }
 	function updateview($id){
-        return $this->db->query("UPDATE home SET content_hits=content_hits+1 WHERE content_slug='".$this->db->escape_str($id)."' OR id_content='".$this->db->escape_str($id)."'");
-    }
+      return $this->db->query("UPDATE home SET content_hits=content_hits+1 WHERE content_slug='".$this->db->escape_str($id)."' OR id_content='".$this->db->escape_str($id)."'");
+  }
 
+	
 }

@@ -35,9 +35,10 @@
     </a>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-
         <a class="collapse-item" href="<?=base_url('dashboard/demoscript')?>">DemoScript</a>
         <a class="collapse-item" href="<?=base_url('dashboard/category')?>">Category</a>
+        <a class="collapse-item" href="<?=base_url('dashboard/filemanager')?>">File Manager</a>
+        <a class="collapse-item" href="<?=base_url('dashboard/contact')?>">Messages</a>
       </div>
     </div>
   </li>

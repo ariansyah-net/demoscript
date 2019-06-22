@@ -37,9 +37,9 @@ class Dashboard extends CI_Controller {
 	//==================== DEMOSCRIPT CRUD FUNCTION ==============================
 
   public function demoscript(){
-    $data['title']    = 'Admin | DemoScript';
+    $data['title']    	= 'Admin | DemoScript';
     $data['main_view']  = 'admin/demoscript/index';
-    $data['ar']    = $this->demo_model->view_demoscript();
+    $data['ar']    			= $this->demo_model->view_demoscript();
     $this->load->view('admin/templates/index', $data);
   }
 
@@ -48,6 +48,7 @@ class Dashboard extends CI_Controller {
 
 		if (isset($_POST['submit'])){
 			$this->demo_model->demoscript_add();
+			$this->session->set_flashdata('success','<i class="fas fa-exclamation-circle"></i> Okey data added successfully..');
 			redirect('dashboard/demoscript');
 		}else{
       $data['title']      = 'Admin | Add DemoScript';
@@ -62,6 +63,7 @@ class Dashboard extends CI_Controller {
 		$id = $this->uri->segment(3);
 		if (isset($_POST['submit'])){
 			$this->demo_model->demoscript_update();
+			$this->session->set_flashdata('info','<i class="fas fa-exclamation-circle"></i> Okey data has been changed..');
 			redirect('dashboard/demoscript');
 		}else{
 			$data['title']      = 'Admin | Cange DemoScript';
@@ -75,7 +77,7 @@ class Dashboard extends CI_Controller {
 	public function remove_demoscript(){
 		$id = $this->uri->segment(3);
 		$this->demo_model->delete_demoscript($id);
-		$this->session->set_flashdata('info','<i class="fas fa-exclamation-circle"></i> Okey data removed..');
+		$this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Okey data removed..');
 		redirect('dashboard/demoscript');
 
 	}
@@ -93,6 +95,7 @@ class Dashboard extends CI_Controller {
 	public function add_category() {
 		if (isset($_POST['submit'])){
 			$this->demo_model->category_add();
+			$this->session->set_flashdata('success','<i class="fas fa-exclamation-circle"></i> Okey data added successfully..');
 			redirect('dashboard/category');
 		}else{
       $data['title']      = 'Admin | Add DemoScript';
@@ -106,6 +109,7 @@ class Dashboard extends CI_Controller {
 		$id = $this->uri->segment(3);
 		if (isset($_POST['submit'])){
 			$this->demo_model->category_update();
+			$this->session->set_flashdata('info','<i class="fas fa-exclamation-circle"></i> Okey data has been changed..');
 			redirect('dashboard/category');
 		}else{
 			$data['title']      = 'Admin | Cange Category';
@@ -118,7 +122,7 @@ class Dashboard extends CI_Controller {
 	public function remove_category(){
 		$id = $this->uri->segment(3);
 		$this->demo_model->delete_category($id);
-		$this->session->set_flashdata('info','<i class="fas fa-exclamation-circle"></i> Okey data removed..');
+		$this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Okey data removed..');
 		redirect('dashboard/category');
 
 	}

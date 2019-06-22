@@ -18,7 +18,20 @@
   <?= form_input('a', $rows['category_name'], ['class' => 'form-control']) ?>
   </div>
   </div>
-
+  <!-- BUTTON CATEGORY -->
+    <div class="form-group row">
+    <?= form_label('Button Class', 'button', ['class' => 'col-sm-2 col-form-label']) ?>
+    <div class="col-sm-3">
+    <?= form_input('b', $rows['button'], ['class' => 'form-control']) ?>
+    </div>
+    </div>
+  <!-- ICON CATEGORY-->
+    <div class="form-group row">
+    <?= form_label('Icon Class', 'icon', ['class' => 'col-sm-2 col-form-label']) ?>
+    <div class="col-sm-3">
+    <?= form_input('c', $rows['icon'], ['class' => 'form-control', 'placeholder' => 'ex : fab fa-bootstrap']) ?>
+    </div>
+    </div>
 <!--CATEGORY BUTTON-->
     <div class="form-group row">
     <?= form_label('', '', ['class' => 'col-sm-2 col-form-label']) ?>

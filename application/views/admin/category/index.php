@@ -9,6 +9,8 @@
           <tr>
             <th>No.</th>
             <th>Category Name</th>
+            <th>Button Class</th>
+            <th>Icons</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -19,6 +21,9 @@
               echo "<tr>
               <td align='center' style='width:40px;'>$no</td>
               <td>$row[category_name]</td>
+              <td><a href='#' class='btn $row[button] btn-sm'>$row[button]</a></td>
+              <td><i class='$row[icon]'></i> $row[icon]</td>
+
               <td style='width:80px;'>
               <a class='btn btn-info btn-sm' href='".base_url('dashboard/edit_category/')."$row[id_category]'> <i class='fas fa-edit'></i> </a> &nbsp;
               <a class='btn btn-danger btn-sm' href='".base_url('dashboard/remove_category/')."$row[id_category]' onclick=\"return confirm('Are you sure can remove this data?')\"> <i class='fas fa-trash'></i> </a>

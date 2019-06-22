@@ -26,7 +26,7 @@
                    <p class='card-text'>$dd[content_main]</p>
                    <div class='d-flex justify-content-between align-items-center'>
                    <div class='btn-group'>
-                   <a href='$dd[content_link]' class='btn btn-sm btn-outline-danger'><i class='fas fa-thumbtack'></i> $dd[category_name]</a>
+                   <a href='$dd[category_slug]' class='btn btn-sm btn-outline-danger'><i class='fas fa-thumbtack'></i> $dd[category_name]</a>
                    <button class='btn btn-sm btn-outline-danger'><i class='far fa-thumbs-up'></i> $dd[content_hits] View</button>
                    </div>
                    <small class='text-muted'>$date</small>
