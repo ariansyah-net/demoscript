@@ -4,8 +4,8 @@
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
           <h4 class="text-white">About Site</h4>
-          <p class="text-muted">DemoScript adalah halaman web yang berisi contoh program, fungsi tertentu, dan studi kasus.
-            materi atau penjelasan dalam web ini dibahas pada halaman <a href="https://ariansyah.net" target="_blank">www.ariansyah.net</a>, tujuannya adalah untuk memudahkan para pengunjung web dalam melihat hasil jadi dari contoh kasus yang dibahas, tersedia beberapa kategori pemrograman web yang ada dan mungkin akan terus bertambah seiring dengan perkembangan teknologi kedepan. <br><br> Semoga apa yang disajikan pada web ini memberikan kemudahan, sehingga kita dapat memperoleh manfaat bersama, terimakasih. <span class="fas fa-smile"></span>
+          <p class="text-muted">DemoScript adalah halaman web yang berisi contoh program, fungsi, dan studi kasus.
+            materi atau penjelasan dalam web ini dibahas pada halaman <a href="https://ariansyah.net" target="_blank">www.ariansyah.net</a>, tersedia beberapa kategori pemrograman web yang ada dan mungkin akan terus bertambah seiring dengan perkembangan teknologi kedepan. <br><br> Semoga apa yang disajikan pada web ini memberikan kemudahan, sehingga kita dapat memperoleh manfaat bersama, terimakasih. <span class="fas fa-smile"></span>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white">Menus</h4>

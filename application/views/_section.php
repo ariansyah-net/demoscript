@@ -1,7 +1,7 @@
 <section class="jumbotron text-center mb-0">
   <div class="container">
-    <h1 class="jumbotron-heading"><i class="fab fa-dochub"></i> DemoScript</h1>
-    <p class="lead text-muted">Adalah halaman yang berisi contoh program, suatu fungsi, maupun studi kasus. materi atau penjelasan dalam web ini dibahas pada halaman <a href="https://ariansyah.net" target="_blank">www.ariansyah.net</a>, semoga halaman ini dapat membantu anda. </p>
+    <h1 class="jumbotron-heading"><i class="fab fa-linux"></i> DemoScript</h1>
+    <p class="lead text-muted"> Powered by <a href="https://ariansyah.net" target="_blank">www.ariansyah.net</a> </p>
     <p>
       <div class="col-sm-12 m-3">
         <?php

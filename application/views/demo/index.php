@@ -51,7 +51,7 @@ if (isset($cat)) {
 
 <?php else: ?>
 
-<div class="jumbotron text-center danger"><i class="fas fa-exclamation-circle"></i> Empty result in database, please create new for showing table.</div>
+<div class="jumbotron text-center danger"><i class="fas fa-exclamation-circle"></i> Sorry, content is under repair.</div>
 
   </div>
 </main>
