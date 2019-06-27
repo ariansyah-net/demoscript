@@ -46,9 +46,8 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-
-
   <!-- Bootstrap core JavaScript-->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="<?= base_url('asset/admin/vendor/jquery/jquery.min.js')?>"></script>
   <script src="<?= base_url('asset/admin/vendor/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
 
@@ -67,7 +66,12 @@
   <script src="<?= base_url('asset/admin/vendor/datatables/dataTables.bootstrap4.min.js')?>"></script>
   <script src="<?= base_url('asset/admin/js/demo/chart-area-demo.js')?>"></script>
   <script src="<?= base_url('asset/admin/js/demo/chart-pie-demo.js')?>"></script>
+  <script src="<?php echo base_url('asset/ckeditor/ckeditor.js'); ?>"></script>
 
+<script>
+      CKEDITOR.replace('editor1' ,{
+        filebrowserImageBrowseUrl : '<?php echo base_url('asset/kcfinder'); ?>'
+      });
+</script>
 </body>
-
 </html>

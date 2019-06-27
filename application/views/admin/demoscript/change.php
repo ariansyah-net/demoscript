@@ -37,11 +37,18 @@
       <?= form_input('b', $rows['content_title'], ['class' => 'form-control']) ?>
     </div>
   </div>
-<!--  CONTENT MAIN -->
+<!--  CONTENT DESC -->
   <div class="form-group row">
-    <?= form_label('Main Content', 'content_main', ['class' => 'col-sm-2 col-form-label']) ?>
+    <?= form_label('Main Content', 'content_desc', ['class' => 'col-sm-2 col-form-label']) ?>
     <div class="col-sm-10">
-      <textarea class="form-control" rows="15" name="c"><?= $rows['content_main'] ?></textarea>
+      <textarea class="form-control" rows="15" name="c"><?= $rows['content_desc'] ?></textarea>
+    </div>
+  </div>
+<!--  CONTENT CODE -->
+  <div class="form-group row">
+    <?= form_label('Demo Code', 'content_code', ['class' => 'col-sm-2 col-form-label']) ?>
+    <div class="col-sm-10">
+      <textarea id="editor1" class="form-control" rows="15" name="code"><?= $rows['content_code'] ?></textarea>
     </div>
   </div>
 <!--CONTENT LINK-->

@@ -8,7 +8,6 @@
   <div class="collapse show" id="collapseCardExample">
     <div class="card-body">
 
-
 <?= form_open_multipart('dashboard/add_demoscript') ?>
 
 <!-- CATEGORY ID -->
@@ -28,11 +27,18 @@
       <?= form_input('b', '', ['class' => 'form-control']) ?>
     </div>
   </div>
-<!--  CONTENT MAIN -->
+<!--  CONTENT DESC -->
   <div class="form-group row">
-    <?= form_label('Main Content', 'content_main', ['class' => 'col-sm-2 col-form-label']) ?>
+    <?= form_label('Description', 'content_desc', ['class' => 'col-sm-2 col-form-label']) ?>
     <div class="col-sm-10">
-      <textarea class="form-control" rows="15" name="c"></textarea>
+      <textarea class="form-control" rows="6" name="c"></textarea>
+    </div>
+  </div>
+<!--  CONTENT CODE -->
+  <div class="form-group row">
+    <?= form_label('Demo Code', 'content_code', ['class' => 'col-sm-2 col-form-label']) ?>
+    <div class="col-sm-10">
+      <textarea class="form-control" rows="15" id="editor1" name="code"></textarea>
     </div>
   </div>
 <!--CONTENT LINK-->

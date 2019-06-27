@@ -8,7 +8,7 @@
   <?php
              foreach ($ar->result_array() as $dd){
                $date = tanggal($dd['content_date']);
-               $content =(strip_tags($dd['content_main']));
+               $content =(strip_tags($dd['content_desc']));
                echo "<div class='card' style='width: 22rem; margin: 10px;''>";
                  if ($dd['content_img'] == ''){
                    echo "<a target='_blank' href='".base_url()."$dd[category_slug]/$dd[content_slug]'>
@@ -23,7 +23,7 @@
                  echo "
                   <div class='card-body'>
                    <h5 class='card-title'><a target='_blank' href='".base_url()."$dd[category_slug]/$dd[content_slug]'>$dd[content_title]</a></h5>
-                   <p class='card-text'>$dd[content_main]</p>
+                   <p class='card-text'>$dd[content_desc]</p>
                    <div class='d-flex justify-content-between align-items-center'>
                    <div class='btn-group'>
                    <a href='$dd[category_slug]' class='btn btn-sm btn-outline-danger'><i class='fas fa-thumbtack'></i> $dd[category_name]</a>

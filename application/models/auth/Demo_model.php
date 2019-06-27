@@ -18,21 +18,21 @@
         $config['upload_path'] = 'asset/post/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|PNG|JPEG';
         $config['max_size'] = '8000'; // kb
-        $config['max_height'] = 250;
         $config['encrypt_name'] = true;
         $this->load->library('upload', $config);
-        // $this->upload->do_upload('e');
-        if (! $this->upload->do_upload('e')) {
-          $this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Uppss.. sorry, your file do not allowed.');
-          redirect('dashboard/add_demoscript', $error);
-        } else {
+        $this->upload->do_upload('e');
+        // if (! $this->upload->do_upload('e')) {
+        //   $this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Uppss.. sorry, your file do not allowed.');
+        //   redirect('dashboard/demoscript');
+        // } else {
 
         $hasil=$this->upload->data();
             if ($hasil['file_name']==''){
                     $datadb = array('id_category'     =>$this->db->escape_str($this->input->post('a')),
                                     'content_title'   =>$this->db->escape_str($this->input->post('b')),
                                     'content_slug'    =>slug($this->input->post('b')),
-                                    'content_main'    =>$this->db->escape_str($this->input->post('c')),
+                                    'content_desc'    =>$this->db->escape_str($this->input->post('c')),
+                                    'content_code'    =>$this->input->post('code'),
                                     'content_link'    =>$this->db->escape_str($this->input->post('d')),
                                     'content_date'    =>date('Y-m-d'),
                                     'content_hits'    =>$this->db->escape_str($this->input->post('f'))
@@ -41,7 +41,8 @@
                     $datadb = array('id_category'     =>$this->db->escape_str($this->input->post('a')),
                                     'content_title'   =>$this->db->escape_str($this->input->post('b')),
                                     'content_slug'    =>slug($this->input->post('b')),
-                                    'content_main'    =>$this->db->escape_str($this->input->post('c')),
+                                    'content_desc'    =>$this->db->escape_str($this->input->post('c')),
+                                    'content_code'    =>$this->input->post('code'),
                                     'content_link'    =>$this->db->escape_str($this->input->post('d')),
                                     'content_img'     =>$hasil['file_name'],
                                     'content_date'    =>date('Y-m-d'),
@@ -49,7 +50,7 @@
             }
         $this->db->insert('home', $datadb);
     }
-  }
+  // }
 
     function demoscript_edit($id){
         return $this->db->query("SELECT * FROM home where id_content='$id'");
@@ -59,21 +60,21 @@
       $config['upload_path'] = 'asset/post/';
       $config['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|PNG|JPEG';
       $config['max_size'] = '8000'; // kb
-      $config['max-height'] = 250;
       $config['encrypt_name'] = true;
       $this->load->library('upload', $config);
-      // $this->upload->do_upload('e');
-      if (! $this->upload->do_upload('e')) {
-        $this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Uppss.. sorry, your file do not allowed.');
-        redirect('dashboard/add_demoscript', $error);
-      } else {
+      $this->upload->do_upload('e');
+      // if (! $this->upload->do_upload('e')) {
+      //   $this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Uppss.. sorry, your file do not allowed.');
+      //   redirect('dashboard/demoscript');
+      // } else {
 
       $hasil=$this->upload->data();
           if ($hasil['file_name']==''){
                   $datadb = array('id_category'     =>$this->db->escape_str($this->input->post('a')),
                                   'content_title'   =>$this->db->escape_str($this->input->post('b')),
                                   'content_slug'    =>slug($this->input->post('b')),
-                                  'content_main'    =>$this->db->escape_str($this->input->post('c')),
+                                  'content_desc'    =>$this->db->escape_str($this->input->post('c')),
+                                  'content_code'    =>$this->input->post('code'),
                                   'content_link'    =>$this->db->escape_str($this->input->post('d')),
                                   'content_date'    =>date('Y-m-d'),
                                   'content_hits'    =>$this->db->escape_str($this->input->post('f'))
@@ -82,7 +83,8 @@
                   $datadb = array('id_category'     =>$this->db->escape_str($this->input->post('a')),
                                   'content_title'   =>$this->db->escape_str($this->input->post('b')),
                                   'content_slug'    =>slug($this->input->post('b')),
-                                  'content_main'    =>$this->db->escape_str($this->input->post('c')),
+                                  'content_desc'    =>$this->db->escape_str($this->input->post('c')),
+                                  'content_code'    =>$this->input->post('code'),
                                   'content_link'    =>$this->db->escape_str($this->input->post('d')),
                                   'content_img'     =>$hasil['file_name'],
                                   'content_date'    =>date('Y-m-d'),
@@ -90,9 +92,8 @@
           }
           $this->db->where('id_content',$this->input->post('id'));
           $this->db->update('home',$datadb);
-  }
-}
-
+    }
+  // }
 
 //=========================== Category Function ========================
 

@@ -18,7 +18,7 @@ if (isset($cat)) {
 <?php foreach ($ar as $hh): ?>
 
 <div class="card m-2" style="width: 22rem;">
-<a href="<?=base_url()?><?= $hh->category_slug ?>/<?= $hh->content_slug ?>">
+<a target="_blank" href="<?=base_url('home/detail')?>/<?= $hh->content_slug ?>">
 
   <?php if (!empty($hh->content_img)): ?>
     <img src="<?= site_url("asset/post/$hh->content_img") ?>" class="card-img-top">
@@ -27,8 +27,8 @@ if (isset($cat)) {
   		    </a>
 
 <div class="card-body">
-<h5 class="card-title"><a href="<?=base_url()?><?= $hh->category_slug ?>/<?= $hh->content_slug ?>"><?= $hh->content_title ?></a></h5>
-<p class="card-text"><?= $hh->content_main ?></p>
+<h5 class="card-title"><a target="_blank" href="<?=base_url('home/detail')?>/<?= $hh->content_slug ?>"><?= $hh->content_title ?></a></h5>
+<p class="card-text"><?= $hh->content_desc ?></p>
 <div class="d-flex justify-content-between align-items-center">
 <div class="btn-group">
 <?= anchor("home/category/$hh->category_slug", '<i class="fas fa-thumbtack"></i> '.$hh->category_name.' ', ['class' => 'btn btn-sm btn-outline-danger']) ?>

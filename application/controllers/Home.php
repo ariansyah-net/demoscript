@@ -14,7 +14,6 @@ class Home extends MY_Controller {
       	$this->load->view('_template', $data);
       }
 
-
     public function category(){
     		$ids = $this->uri->segment(3);
     		$dat = $this->db->query("SELECT * FROM home a JOIN category b ON a.id_category=b.id_category WHERE category_slug='".$this->db->escape_str($ids)."'");
@@ -47,17 +46,18 @@ class Home extends MY_Controller {
     		$this->load->view('_template', $data);
     	}
 
-
-      // public function detail() {
-      //   $ids = $this->uri->segment(3);
-    	// 	$dat = $this->db->query("SELECT * FROM berita where judul_seo='".$this->db->escape_str($ids)."'");
-    	//     $row = $dat->row();
-    	//     $total = $dat->num_rows();
-    	//         if ($total == 0){
-    	//         	redirect('main');
-    	//         }
-    	// 	$this->model_berita->berita_dibaca_update($ids);
-    	// 	$this->template->load('phpmu-one/template','phpmu-one/view_berita',$data);
-      // }
+      public function detail() {
+        $ids = $this->uri->segment(3);
+    		$dat = $this->db->query("SELECT * FROM home where content_slug='".$this->db->escape_str($ids)."'");
+    	    $row = $dat->row();
+    	    $total = $dat->num_rows();
+    	        if ($total == 0){
+    	        	redirect(base_url());
+    	        }
+    		$this->home_model->updateview($ids);
+        $data['ar']         = $this->db->query("SELECT * FROM home WHERE content_slug='".$this->db->escape_str($ids)."'");
+        $data['title']      = $row->content_slug;
+    		$this->load->view('demo/detail', $data);
+      }
 
 }

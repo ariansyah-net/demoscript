@@ -28,7 +28,8 @@ class Home_model extends MY_Model
 		return [
 			'content_title'		=> '',
 			'content_slug'		=> '',
-			'content_main' 		=> '',
+			'content_desc' 		=> '',
+			'content_code' 		=> '',
 			'content_link' 		=> '',
 			'content_img' 		=> '',
 			'content_date' 		=> '',
@@ -49,5 +50,4 @@ class Home_model extends MY_Model
       return $this->db->query("UPDATE home SET content_hits=content_hits+1 WHERE content_slug='".$this->db->escape_str($id)."' OR id_content='".$this->db->escape_str($id)."'");
   }
 
-	
 }
