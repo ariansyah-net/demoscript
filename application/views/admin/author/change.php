@@ -2,10 +2,10 @@
   <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
     <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-arrow-down"></i> Change Author</h6>
       </a>
-<div class="collapse show" id="collapseCardExample">
-  <div class="card-body">
+    <div class="collapse show" id="collapseCardExample">
+    <div class="card-body">
     <?= form_open_multipart('dashboard/change_author') ?>
-      <?= form_hidden('id_auth', $ar['id_auth']) ?>
+    <?= form_hidden('id_auth', $ar['id_auth']) ?>
 <!-- NAME -->
     <div class="form-group row">
     <?= form_label('Name', 'name', ['class' => 'col-sm-2 col-form-label']) ?>
@@ -52,7 +52,6 @@
     </div>
     </div>
     </div>
-
 <!--AVATAR -->
     <div class="form-group row">
     <?= form_label('Avatar', 'site_favicon', ['class' => 'col-sm-2 col-form-label']) ?>
@@ -63,7 +62,6 @@
     </div>
     </div>
     </div>
-
 <!-- IMAGE AVATAR -->
     <div class="form-group row">
     <?= form_label('', '', ['class' => 'col-sm-2 col-form-label']) ?>
@@ -71,17 +69,14 @@
     <img class="img-fluid img-thumbnail" style="max-width:80px;" src="<?=base_url('asset/img/'.$ar['avatar'].' ') ?>">
     </div>
     </div>
-
 <!--CONTENT BUTTON-->
     <div class="form-group row">
-      <?= form_label('', '', ['class' => 'col-sm-2 col-form-label']) ?>
-      <div class="col-sm-10 p-3">
-        <button type='submit' name='submit' class='btn btn-primary'><i class='fa fa-save'></i> Save Data</button>
-      </div>
+    <?= form_label('', '', ['class' => 'col-sm-2 col-form-label']) ?>
+    <div class="col-sm-10 p-3">
+    <button type='submit' name='submit' class='btn btn-primary'><i class='fa fa-save'></i> Save Data</button>
     </div>
-
-<?= form_close() ?>
-
     </div>
-  </div>
-</div>
+    <?= form_close() ?>
+    </div>
+    </div>
+    </div>

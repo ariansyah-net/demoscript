@@ -213,7 +213,6 @@ class Dashboard extends CI_Controller {
 		$this->load->view('admin/templates/index', $data);
 	}
 
-
 	// ======================== DOWNLOAD ================================
 	function download() {
 		$data['title'] 			= 'Admin | Download';
