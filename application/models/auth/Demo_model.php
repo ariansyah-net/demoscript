@@ -332,5 +332,13 @@
       return $this->db->query("SELECT * FROM download where id_download='$id'");
   }
 
+  function delete_download($id){
+      $this->db->where('id_download',$id);
+      $query = $this->db->get('download');
+      $ar = $query->row();
+      $this->db->delete('download', array('id_auth' => $id));
+      unlink("./asset/files/$ar->down_filename");
+  }
+
 
 }
