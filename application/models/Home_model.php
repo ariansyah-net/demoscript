@@ -50,4 +50,39 @@ class Home_model extends MY_Model
       return $this->db->query("UPDATE home SET content_hits=content_hits+1 WHERE content_slug='".$this->db->escape_str($id)."' OR id_content='".$this->db->escape_str($id)."'");
   }
 
+
+    function send_message(){
+
+        if ($this->input->post('cek')==''){
+            $inbox_name       = strip_tags($this->input->post('a'));
+            $inbox_email      = strip_tags($this->input->post('b'));
+            $inbox_subject    = strip_tags($this->input->post('c'));
+            $inbox_message    = strip_tags($this->input->post('d'));
+
+            $arcaptcha        = $this->input->post('captcha');
+            // $firstNumber      = $this->input->post('firstNumber');
+            // $secondNumber     = $this->input->post('secondNumber');
+            // $checkTotal       = $firstNumber + $secondNumber;
+
+            if ($arCaptcha == '') {
+              $datadb           = array('inbox_name'=>$inbox_name,
+                                  'inbox_email'=>$inbox_email,
+                                  'inbox_subject'=>$inbox_subject,
+                                  'inbox_message'=>$inbox_message,
+                                  // 'inbox_date'=>date('Y-m-d'),
+                                  // 'inbox_time'=>date('H:i:s'),
+                                  'inbox_read'=>'N');
+              $this->db->insert('inbox', $datadb);
+            } else {
+              $this->session->set_flashdata('danger','Uppss.. something wrong, Please correct your data, and make sure your answer is right.');
+            }
+        }
+    }
+
+
+	function updatehits($file){
+        return $this->db->query("UPDATE download set down_hits=down_hits+1 where down_filename='".$this->db->escape_str($file)."'");
+    }
+
+
 }

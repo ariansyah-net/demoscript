@@ -1,10 +1,7 @@
 <main role="main">
-
 <div class="album bg-light">
 <div class="container">
-
 <div class="row">
-
   <?php
              foreach ($ar->result_array() as $dd){
                $date = tanggal($dd['content_date']);

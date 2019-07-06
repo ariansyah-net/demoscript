@@ -155,3 +155,66 @@ function check_time($datetime, $full = false) {
             $s = strtolower(str_replace($c, '-', $s)); // Ganti spasi dengan tanda - dan ubah hurufnya menjadi kecil semua
             return $s;
         }
+
+
+    function cek_terakhir($datetime, $full = false) {
+    		$today = time();
+                     $createdday= strtotime($datetime);
+                     $datediff = abs($today - $createdday);
+                     $difftext="";
+                     $years = floor($datediff / (365*60*60*24));
+                     $months = floor(($datediff - $years * 365*60*60*24) / (30*60*60*24));
+                     $days = floor(($datediff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+                     $hours= floor($datediff/3600);
+                     $minutes= floor($datediff/60);
+                     $seconds= floor($datediff);
+                     //year checker
+                     if($difftext=="")
+                     {
+                       if($years>1)
+                        $difftext=$years." Tahun";
+                       elseif($years==1)
+                        $difftext=$years." Tahun";
+                     }
+                     //month checker
+                     if($difftext=="")
+                     {
+                        if($months>1)
+                        $difftext=$months." Bulan";
+                        elseif($months==1)
+                        $difftext=$months." Bulan";
+                     }
+                     //month checker
+                     if($difftext=="")
+                     {
+                        if($days>1)
+                        $difftext=$days." Hari";
+                        elseif($days==1)
+                        $difftext=$days." Hari";
+                     }
+                     //hour checker
+                     if($difftext=="")
+                     {
+                        if($hours>1)
+                        $difftext=$hours." Jam";
+                        elseif($hours==1)
+                        $difftext=$hours." Jam";
+                     }
+                     //minutes checker
+                     if($difftext=="")
+                     {
+                        if($minutes>1)
+                        $difftext=$minutes." Menit";
+                        elseif($minutes==1)
+                        $difftext=$minutes." Menit";
+                     }
+                     //seconds checker
+                     if($difftext=="")
+                     {
+                        if($seconds>1)
+                        $difftext=$seconds." Detik";
+                        elseif($seconds==1)
+                        $difftext=$seconds." Detik";
+                     }
+                     return $difftext;
+    	}

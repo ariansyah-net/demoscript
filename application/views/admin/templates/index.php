@@ -7,7 +7,9 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title><?= $title ?></title>
-  <link href="<?= base_url('/asset/img/favicon.gif')?>" rel="shortcut icon" type="image/gif"/>
+  <?php $query = $this->db->get('settings');foreach ($query->result_array() as $ar) {
+    echo "<link rel='shortcut icon' href='".base_url('asset/img/')."$ar[site_favicon]' >";}?>
+  <!-- <link href="<?= base_url('/asset/img/favicon.gif')?>" rel="shortcut icon" type="image/gif"/> -->
   <!-- Custom fonts for this template-->
   <link href="<?= base_url('asset/admin/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -62,16 +64,20 @@
   <script src="<?= base_url('asset/admin/vendor/chart.js/Chart.min.js')?>"></script>
 
   <!-- Page level custom scripts -->
+  <script src="<?= base_url('asset/js/upload.js')?>"></script>
   <script src="<?= base_url('asset/admin/js/demo/datatables-demo.js')?>"></script>
   <script src="<?= base_url('asset/admin/vendor/datatables/dataTables.bootstrap4.min.js')?>"></script>
   <script src="<?= base_url('asset/admin/js/demo/chart-area-demo.js')?>"></script>
   <script src="<?= base_url('asset/admin/js/demo/chart-pie-demo.js')?>"></script>
-  <script src="<?php echo base_url('asset/ckeditor/ckeditor.js'); ?>"></script>
+  <script src="<?= base_url('asset/ckeditor/ckeditor.js')?>"></script>
 
 <script>
-      CKEDITOR.replace('editor1' ,{
-        filebrowserImageBrowseUrl : '<?php echo base_url('asset/kcfinder'); ?>'
-      });
+  $(document).ready(function () {
+  bsCustomFileInput.init()
+  })
+  CKEDITOR.replace('editor1',{
+  filebrowserImageBrowseUrl : '<?php echo base_url('asset/kcfinder'); ?>'
+  });
 </script>
 </body>
 </html>

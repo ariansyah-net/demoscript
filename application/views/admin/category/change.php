@@ -14,7 +14,7 @@
 <!-- CATEGORY NAME -->
   <div class="form-group row">
   <?= form_label('Category Name', 'category_name', ['class' => 'col-sm-2 col-form-label']) ?>
-  <div class="col-sm-10">
+  <div class="col-sm-8">
   <?= form_input('a', $rows['category_name'], ['class' => 'form-control']) ?>
   </div>
   </div>

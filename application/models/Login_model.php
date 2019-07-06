@@ -36,8 +36,9 @@ class Login_model extends MY_Model
 
 	public function login($input)
 	    {
-	        $input->password = sha1($input->password);
-
+	        // $input->password = sha1($input->password);
+					// $password = hash("sha512", md5($this->input->post('b')));
+					$input->password = hash('sha512', sha1($input->password));
 	        $user = $this->db->where('username', $input->username)
 	                          ->where('password', $input->password)
 	                          ->where('active', 'Y')
@@ -46,14 +47,15 @@ class Login_model extends MY_Model
 	                          ->row();
 	        if (count($user)) {
 	            $data = [
+									'id_auth'			=> $user->id_auth,
 	                'name' 				=> $user->name,
 	                'username'    => $user->username,
 	                'password' 		=> $user->password,
 	                'level' 			=> $user->level,
 									'active' 			=> $user->active,
+									'avatar' 			=> $user->avatar,
 	                'ar_login' 		=> true
 	            ];
-
 	            $this->session->set_userdata($data);
 	            return true;
 	        }

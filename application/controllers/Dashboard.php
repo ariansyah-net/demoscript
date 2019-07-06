@@ -12,7 +12,7 @@ class Dashboard extends CI_Controller {
   protected function arLogin(){
       $arLogin = $this->session->userdata('ar_login');
       if(!$arLogin){
-        show_404();
+        redirect(base_url());
       }
   }
 
@@ -124,7 +124,126 @@ class Dashboard extends CI_Controller {
 		$this->demo_model->delete_category($id);
 		$this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Okey data removed..');
 		redirect('dashboard/category');
+	}
 
+// ========================== INBOX MESSAGE ================================
+
+	function inbox() {
+		$data['title']    	= 'Admin | Inbox';
+    $data['main_view']  = 'admin/inbox/index';
+    $data['ar']    			= $this->demo_model->load_inbox();
+    $this->load->view('admin/templates/index', $data);
+	}
+
+	function detail_message(){
+		$id = $this->uri->segment(3);
+		$this->db->query("UPDATE inbox SET inbox_read='Y' where id_inbox='$id'");
+		if (isset($_POST['submit'])){
+			$this->demo_model->reply_message();
+			$data['rows'] = $this->demo_model->view_inbox($id)->row_array();
+			$data['title']			= 'Reply Message';
+			$data['main_view']  = 'admin/inbox/detail';
+			$this->load->view('admin/templates/index', $data);
+		}else{
+			$data['rows'] = $this->demo_model->view_inbox($id)->row_array();
+			$data['title']			= 'Reply Message';
+			$data['main_view']  = 'admin/inbox/detail';
+			$this->load->view('admin/templates/index', $data);
+		}
+	}
+
+// ============================= SETTINGS ================================
+
+	function settings() {
+		if (isset($_POST['submit'])){
+				$this->demo_model->settings_update();
+				redirect('dashboard/settings');
+			}else{
+				$data['title']			= 'Site Settings';
+				$data['main_view']  = 'admin/settings/index';
+				$data['ar'] 				= $this->demo_model->settings()->row_array();
+				$this->load->view('admin/templates/index', $data);
+			}
+	}
+
+// ============================ ADMINISTRATOR ================================
+
+	function author() {
+		$data['title']    	= 'Admin | Author';
+    $data['main_view']  = 'admin/author/index';
+    $data['ar']    			= $this->demo_model->loadAuthor();
+    $this->load->view('admin/templates/index', $data);
+	}
+	function add_author() {
+		if (isset($_POST['submit'])){
+			$this->demo_model->author_add();
+			$this->session->set_flashdata('success','<i class="fas fa-exclamation-circle"></i> Okey Author added successfully..');
+			redirect('dashboard/author');
+		}else{
+			$data['title']      = 'Admin | Add Author';
+			$data['main_view']  = 'admin/author/add';
+			$this->load->view('admin/templates/index', $data);
+		}
+	}
+	function change_author() {
+		$id = $this->uri->segment(3);
+		if (isset($_POST['submit'])){
+			$this->demo_model->author_update();
+			$this->session->set_flashdata('info','<i class="fas fa-exclamation-circle"></i> Okey Author has been changed..');
+			redirect('dashboard/author');
+		}else{
+			$data['title']      = 'Admin | Cange Author';
+			$data['main_view']  = 'admin/author/change';
+			$data['ar'] 				= $this->demo_model->author_edit($id)->row_array();
+			$this->load->view('admin/templates/index', $data);
+		}
+	}
+	function remove_author(){
+		$id = $this->uri->segment(3);
+		$this->demo_model->delete_author($id);
+		$this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Okey author removed..');
+		redirect('dashboard/author');
+	}
+
+
+// ======================== FILE MANAGER ================================
+	function filemanager() {
+		$data['title'] 			= 'Admin | File Manager';
+		$data['main_view'] = 'admin/filemanager/index';
+		$this->load->view('admin/templates/index', $data);
+	}
+
+
+	// ======================== DOWNLOAD ================================
+	function download() {
+		$data['title'] 			= 'Admin | Download';
+		$data['main_view'] 	= 'admin/download/index';
+		$data['ar']    			= $this->db->get('download');
+		$this->load->view('admin/templates/index', $data);
+	}
+	function add_download() {
+		if (isset($_POST['submit'])){
+			$this->demo_model->download_add();
+			$this->session->set_flashdata('success','<i class="fas fa-exclamation-circle"></i> Okey download list added successfully..');
+			redirect('dashboard/download');
+		}else{
+			$data['title']      = 'Admin | Add Download';
+			$data['main_view']  = 'admin/download/add';
+			$this->load->view('admin/templates/index', $data);
+		}
+	}
+	function change_download() {
+		$id = $this->uri->segment(3);
+		if (isset($_POST['submit'])){
+			$this->demo_model->download_update();
+			$this->session->set_flashdata('info','<i class="fas fa-exclamation-circle"></i> Okey download list has been changed..');
+			redirect('dashboard/download');
+		}else{
+			$data['title']      = 'Admin | Cange Download';
+			$data['main_view']  = 'admin/download/change';
+			$data['ar'] 				= $this->demo_model->download_edit($id)->row_array();
+			$this->load->view('admin/templates/index', $data);
+		}
 	}
 
 }

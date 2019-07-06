@@ -13,6 +13,7 @@ class Home extends MY_Controller {
       	$data['pagination'] = $this->home_model->makePagination(site_url('home'), 2, $total);
       	$this->load->view('_template', $data);
       }
+// ============================== CATEGORY =================================
 
     public function category(){
     		$ids = $this->uri->segment(3);
@@ -20,7 +21,7 @@ class Home extends MY_Controller {
         $row = $dat->row();
         $total = $dat->num_rows();
           if ($total == 0){
-            $this->session->set_flashdata('warning','<i class="fas fa-exclamation-circle"></i> Maaf, untuk sementara kategori ini belum tersedia.');
+            $this->session->set_flashdata('warning','<i class="fas fa-exclamation-circle"></i> Sorry, this category is temporarily unavailable.');
           	redirect('home');
           }
 
@@ -45,7 +46,7 @@ class Home extends MY_Controller {
         $this->home_model->updateview($ids);
     		$this->load->view('_template', $data);
     	}
-
+// ================================= DETAIL =============================
       public function detail() {
         $ids = $this->uri->segment(3);
     		$dat = $this->db->query("SELECT * FROM home where content_slug='".$this->db->escape_str($ids)."'");
@@ -59,5 +60,9 @@ class Home extends MY_Controller {
         $data['title']      = $row->content_slug;
     		$this->load->view('demo/detail', $data);
       }
+
+// =========================  ===================================
+
+
 
 }

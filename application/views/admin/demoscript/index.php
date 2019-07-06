@@ -5,7 +5,7 @@
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>No.</th>
@@ -29,8 +29,8 @@
               <td>$date</td>
               <td>$row[content_hits] View</td>
               <td style='width:80px;'>
-              <a class='btn btn-info btn-sm' href='".base_url('dashboard/edit_demoscript/')."$row[id_content]'> <i class='fas fa-edit'></i> </a> &nbsp;
-              <a class='btn btn-danger btn-sm' href='".base_url('dashboard/remove_demoscript/')."$row[id_content]' onclick=\"return confirm('Are you sure can remove this data?')\"> <i class='fas fa-trash'></i> </a>
+              <a class='btn btn-default btn-sm' title='Detail' href='".base_url('dashboard/edit_demoscript/')."$row[id_content]'> <i class='fas fa-edit'></i> </a> &nbsp;
+              <a class='btn btn-default btn-sm' title='Remove' href='".base_url('dashboard/remove_demoscript/')."$row[id_content]' onclick=\"return confirm('Are you sure can remove this data?')\"> <i class='fas fa-trash'></i> </a>
               </td>
               </tr>
               ";
