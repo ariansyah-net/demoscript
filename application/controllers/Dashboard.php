@@ -245,5 +245,11 @@ class Dashboard extends CI_Controller {
 			$this->load->view('admin/templates/index', $data);
 		}
 	}
+	function remove_download(){
+		$id = $this->uri->segment(3);
+		$this->demo_model->delete_download($id);
+		$this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Okey author removed..');
+		redirect('dashboard/download');
+	}
 
 }
