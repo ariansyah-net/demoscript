@@ -248,7 +248,7 @@ class Dashboard extends CI_Controller {
 	function remove_download(){
 		$id = $this->uri->segment(3);
 		$this->demo_model->delete_download($id);
-		$this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Okey author removed..');
+		$this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Okey file removed..');
 		redirect('dashboard/download');
 	}
 

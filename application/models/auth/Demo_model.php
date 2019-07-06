@@ -336,7 +336,7 @@
       $this->db->where('id_download',$id);
       $query = $this->db->get('download');
       $ar = $query->row();
-      $this->db->delete('download', array('id_auth' => $id));
+      $this->db->delete('download', array('id_download' => $id));
       unlink("./asset/files/$ar->down_filename");
   }
 
