@@ -70,7 +70,7 @@
     </div>
     </div>
     </div>
-<!-- IMAGE AVATAR -->
+<!-- ICON FILE -->
     <div class="form-group row">
     <?= form_label('', '', ['class' => 'col-sm-2 col-form-label']) ?>
     <div class="col-sm-5">
