@@ -3,55 +3,105 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
  class Contact extends MY_Controller {
 
-  function __construct() {
-   parent::__construct();
-   $this->load->helper('captcha');
-  }
 
-  function index(){
+   function index(){
+      $config_captcha = array(
+              'img_path'    => './asset/captcha/',
+              'img_url'     => base_url().'asset/captcha/',
+              'img_width'   => 150,
+              'img_height'  => 50,
+              'expiration'  => 2200,
+              'pool'        => '0123456789',
+              'colors'      => array(
+                                    'background' => array(255, 255, 255),
+                                    'border' => array(230, 230, 230),
+                                    'text' => array(0, 0, 0),
+                                    'grid' => array(230, 120, 110))
+             );
 
-    $this->form_validation->set_rules('arcaptcha', 'arcaptcha', 'trim|required');
-    	  if ($this->form_validation->run() == false) {
-
-           $config_captcha = array(
-            'img_path'    => './asset/captcha/',
-            'img_url'     => base_url().'asset/captcha/',
-            'img_width'   => 150,
-            'img_height'  => 50,
-            'expiration'  => 2200,
-            'pool'        => '0123456789',
-            'colors'      => array(
-                                  'background' => array(255, 255, 255),
-                                  'border' => array(230, 230, 230),
-                                  'text' => array(0, 0, 0),
-                                  'grid' => array(230, 120, 110))
-           );
-           $cap                 = create_captcha($config_captcha);
-           $data['img']         = $cap['image'];
-           $this->session->set_userdata('mycaptcha', $cap['word']);
-           $data['title']       = 'Contact Us';
-           $data['main_view']   = 'demo/contact';
-           $this->load->view('_template', $data);
-         }else{
-          $this->home_model->send_message();
-    			$this->session->set_flashdata('info','Thankyou, your message has been sent, we will follow up on this.');
-    			redirect('contact');
-         }
-  }
+      // create captcha image
+      $cap = create_captcha($config_captcha);
+      // store image html code in a variable
+      $data['img'] = $cap['image'];
+      // store the captcha word in a session
+      $this->session->set_userdata('mycaptcha', $cap['word']);
+      $data['title']       = 'Contact Us';
+      $data['form_action'] = 'submit';
+      $data['main_view']   = 'demo/contact';
+      $this->load->view('_template', $data);
+     }
 
 
-  function cek() {
-   $captcha = $this->input->post('captcha');
-   $mycaptcha = $this->session->userdata('mycaptcha');
+     function cek() {
+      $secutity_code = $this->input->post('secutity_code');
+      $this->session->set_userdata('mycaptcha', $cap['word']);
+      $mycaptcha = $this->session->userdata('mycaptcha');
 
-   if ($this->input->post() && ($captcha == $mycaptcha)) {
-    $this->session->set_flashdata('info','Captcha benar :) ');
-    redirect('contact');
-   } else {
-    $this->session->set_flashdata('danger','Captcha salah :( ');
-    redirect('contact');
-   }
-  }
+      if ($this->input->post() && ($secutity_code == $mycaptcha)) {
+        $this->session->set_flashdata('info','Thankyou, your message has been sent, we will follow up on this.');
+       redirect('contact');
+      } else {
+ 			 $this->session->set_flashdata('danger','Upss.. thats something wrong, please check again.');
+       redirect('contact');
+      }
+     }
+
+
+
+
+
+
+
+
+
+
+
+  // function index(){
+  //
+  //     $this->form_validation->set_rules('arcaptcha', 'arcaptcha', 'trim|required');
+  // 	  if ($this->form_validation->run() == false) {
+  //
+  //        $config_captcha = array(
+  //         'img_path'    => './asset/captcha/',
+  //         'img_url'     => base_url().'asset/captcha/',
+  //         'img_width'   => 150,
+  //         'img_height'  => 50,
+  //         'expiration'  => 2200,
+  //         'pool'        => '0123456789',
+  //         'colors'      => array(
+  //                               'background' => array(255, 255, 255),
+  //                               'border' => array(230, 230, 230),
+  //                               'text' => array(0, 0, 0),
+  //                               'grid' => array(230, 120, 110))
+  //        );
+  //        $cap                 = create_captcha($config_captcha);
+  //        $data['img']         = $cap['image'];
+  //        $this->session->set_userdata('mycaptcha', $cap['word']);
+  //        $data['title']       = 'Contact Us';
+  //        $data['form_action'] = 'submit';
+  //        $data['main_view']   = 'demo/contact';
+  //        $this->load->view('_template', $data);
+  //      }else{
+  //       $this->home_model->send_message();
+  // 			$this->session->set_flashdata('info','Thankyou, your message has been sent, we will follow up on this.');
+  // 			redirect('contact');
+  //      }
+  // }
+
+  //
+  //
+  // function cek() {
+  //  $captcha = $this->input->post('captcha');
+  //  $mycaptcha = $this->session->userdata('mycaptcha');
+  //
+  //  if ($this->input->post() && ($captcha == $mycaptcha)) {
+  //   $this->session->set_flashdata('info','Captcha benar :) ');
+  //   redirect('contact');
+  //  } else {
+  //   $this->session->set_flashdata('danger','Captcha salah :( ');
+  //   redirect('contact');
+  //  }
+  // }
 
  }
 ?>

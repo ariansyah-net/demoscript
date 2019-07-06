@@ -64,13 +64,13 @@ class Home_model extends MY_Model
             // $secondNumber     = $this->input->post('secondNumber');
             // $checkTotal       = $firstNumber + $secondNumber;
 
-            if ($arCaptcha == '') {
+            if ($arcaptcha == '') {
               $datadb           = array('inbox_name'=>$inbox_name,
-                                  'inbox_email'=>$inbox_email,
+                                  'inbox_emails'=>$inbox_email,
                                   'inbox_subject'=>$inbox_subject,
                                   'inbox_message'=>$inbox_message,
-                                  // 'inbox_date'=>date('Y-m-d'),
-                                  // 'inbox_time'=>date('H:i:s'),
+                                  'inbox_date'=>date('Y-m-d'),
+                                  'inbox_time'=>date('H:i:s'),
                                   'inbox_read'=>'N');
               $this->db->insert('inbox', $datadb);
             } else {
