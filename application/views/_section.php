@@ -7,8 +7,7 @@
         <?php
 					$sql = $this->db->query("SELECT * FROM category ORDER BY id_category");
 					foreach ($sql->result_array() as $ar){
-						echo "<a href='".base_url()."home/category/$ar[category_slug]' class='btn $ar[button]'><i class='$ar[icon]'></i> $ar[category_name]</a>";
-            echo "&nbsp;&nbsp;";
+						echo "<a href='".base_url()."home/category/$ar[category_slug]' class='btn $ar[button] mr-2 mb-2'><i class='$ar[icon]'></i> $ar[category_name]</a>";
 					}
 				?>
       </div>
