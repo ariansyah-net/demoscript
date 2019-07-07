@@ -57,7 +57,7 @@ class Home extends MY_Controller {
     	        }
     		$this->home_model->updateview($ids);
         $data['ar']         = $this->db->query("SELECT * FROM home WHERE content_slug='".$this->db->escape_str($ids)."'");
-        $data['title']      = $row->content_slug;
+        $data['title']      = $row->content_title;
     		$this->load->view('demo/detail', $data);
       }
 
