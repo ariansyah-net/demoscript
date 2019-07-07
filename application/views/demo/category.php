@@ -6,20 +6,20 @@
              foreach ($ar->result_array() as $dd){
                $date = tanggal($dd['content_date']);
                $content =(strip_tags($dd['content_desc']));
-               echo "<div class='card' style='width: 22rem; margin: 10px;''>";
+               echo "<div class='card m-2' style='width: 22rem;'>";
                  if ($dd['content_img'] == ''){
-                   echo "<a target='_blank' href='".base_url()."$dd[category_slug]/$dd[content_slug]'>
+                   echo "<a target='_blank' href='".base_url('home/detail/')."$dd[content_slug]'>
                    <img src='".base_url()."asset/post/noimage.png' class='card-img-top' alt='$dd[category_name]' >
                    </a>
                    ";
                  }else{
-                   echo "<a target='_blank' href='".base_url()."$dd[category_slug]/$dd[content_slug]'>
+                   echo "<a target='_blank' href='".base_url('home/detail/')."$dd[content_slug]'>
                    <img src='".base_url()."asset/post/$dd[content_img]' class='card-img-top' alt='$dd[category_name]'>
                    </a>";
                  }
                  echo "
                   <div class='card-body'>
-                   <h5 class='card-title'><a target='_blank' href='".base_url()."$dd[category_slug]/$dd[content_slug]'>$dd[content_title]</a></h5>
+                   <h5 class='card-title'><a target='_blank' href='".base_url('home/detail/')."$dd[content_slug]'>$dd[content_title]</a></h5>
                    <p class='card-text'>$dd[content_desc]</p>
                    <div class='d-flex justify-content-between align-items-center'>
                    <div class='btn-group'>
