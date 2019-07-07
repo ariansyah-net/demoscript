@@ -53,6 +53,6 @@ $route['default_controller'] = 'home';
 $route['404_override'] = 'Notfound';
 $route['translate_uri_dashes'] = FALSE;
 
+// Aditional Set
 $route['home/(:num)'] = 'home/index/$1';
-
 $route['logout'] = 'ar503/logout';
