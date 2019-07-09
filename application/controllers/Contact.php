@@ -19,11 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     'grid' => array(230, 120, 110))
              );
 
-      // create captcha image
       $cap = create_captcha($config_captcha);
-      // store image html code in a variable
       $data['img'] = $cap['image'];
-      // store the captcha word in a session
       $this->session->set_userdata('mycaptcha', $cap['word']);
       $data['title']       = 'Contact Us';
       $data['form_action'] = 'submit';
@@ -33,17 +30,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
      function cek() {
-      $secutity_code = $this->input->post('secutity_code');
+      // $this->session->set_userdata('mycaptcha', $cap['word']);
+      // $mycaptcha = $this->session->userdata('mycaptcha');
+      // $this->home_model->send_message();
+			// $this->session->set_flashdata('info','<i class="fas fa-check"></i> Thankyou, your message has been sent, we will follow up on this.');
+			// redirect('contact');
+
+      $ar = $this->input->post('secutity_code');
       $this->session->set_userdata('mycaptcha', $cap['word']);
       $mycaptcha = $this->session->userdata('mycaptcha');
 
-      if ($this->input->post() && ($secutity_code == $mycaptcha)) {
+      if ($this->input->post() && ($ar == $mycaptcha)) {
+        $this->home_model->send_message();
         $this->session->set_flashdata('info','Thankyou, your message has been sent, we will follow up on this.');
        redirect('contact');
       } else {
- 			 $this->session->set_flashdata('danger','Upss.. thats something wrong, please check again.');
+ 			 $this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Upss.. something is wrong, please check again.');
        redirect('contact');
       }
+
      }
 
 
