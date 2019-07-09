@@ -151,6 +151,12 @@ class Dashboard extends CI_Controller {
 			$this->load->view('admin/templates/index', $data);
 		}
 	}
+	function remove_message(){
+		$id = $this->uri->segment(3);
+		$this->demo_model->delete_message($id);
+		$this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Okey message removed..');
+		redirect('dashboard/inbox');
+	}
 
 // ============================= SETTINGS ================================
 

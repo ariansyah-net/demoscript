@@ -164,7 +164,9 @@
            $this->session->set_flashdata("danger","<strong>Uppss.. </strong> Your Reply is'nt sent to <strong>$_POST[b]</strong>");
          }
     }
-
+    function delete_message($id){
+        return $this->db->query("DELETE FROM inbox where id_inbox='$id'");
+    }
 
 // =========================== SETTINGS =====================================
 

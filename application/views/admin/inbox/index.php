@@ -30,7 +30,7 @@
               <td>$dt</td>
               <td style='width:80px;'>
               <a class='btn btn-default btn-sm' title='Detail' href='".base_url('dashboard/detail_message/')."$row[id_inbox]'> <i class='fas fa-edit'></i> </a> &nbsp;
-              <a class='btn btn-default btn-sm' title='Remove' href='".base_url('dashboard/detail_message/')."$row[id_inbox]' onclick=\"return confirm('Are you sure can remove this data?')\"> <i class='fas fa-trash'></i> </a>
+              <a class='btn btn-default btn-sm' title='Remove' href='".base_url('dashboard/remove_message/')."$row[id_inbox]' onclick=\"return confirm('Are you sure can remove this data?')\"> <i class='fas fa-trash'></i> </a>
               </td>
               </tr>
               ";
