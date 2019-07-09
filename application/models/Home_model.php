@@ -50,47 +50,6 @@ class Home_model extends MY_Model
       return $this->db->query("UPDATE home SET content_hits=content_hits+1 WHERE content_slug='".$this->db->escape_str($id)."' OR id_content='".$this->db->escape_str($id)."'");
   }
 
-
-    function send_message(){
-
-			$datadb = array('inbox_name'    => strip_tags($this->input->post('a')),
-                      'inbox_email'   => strip_tags($this->input->post('b')),
-                      'inbox_subject' => strip_tags($this->input->post('c')),
-                      'inbox_message' => strip_tags($this->input->post('d')),
-                      'inbox_date'		=> date('Y-m-d'),
-											'inbox_time'		=> date('H:i:s')
-										);
-			// $ar = $this->input->post('secutity_code');
-      $this->db->insert('inbox', $datadb);
-
-
-        // // if ($this->input->post('cek')==''){
-				// $secutity_code = $this->input->post('secutity_code');
-				// if ($this->input->post() && ($arcaptcha = $mycaptcha)) {
-        //     $inbox_name       = strip_tags($this->input->post('a'));
-        //     $inbox_email      = strip_tags($this->input->post('b'));
-        //     $inbox_subject    = strip_tags($this->input->post('c'));
-        //     $inbox_message    = strip_tags($this->input->post('d'));
-        //     $arcaptcha        = strip_tags($this->input->post('secutity_code'));
-				//
-				//
-				//
-				// 		if ($arcaptcha == $mycaptcha) {
-        //       $datadb           = array('inbox_name'=>$inbox_name,
-        //                           'inbox_emails'=>$inbox_email,
-        //                           'inbox_subject'=>$inbox_subject,
-        //                           'inbox_message'=>$inbox_message,
-        //                           'inbox_date'=>date('Y-m-d'),
-        //                           'inbox_time'=>date('H:i:s'),
-        //                           'inbox_read'=>'N');
-        //       $this->db->insert('inbox', $datadb);
-        //     } else {
-        //       $this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Uppss.. something wrong, Please correct your data, and make sure your answer is right.');
-        //     }
-        // }
-    }
-
-
 	function updatehits($file){
         return $this->db->query("UPDATE download set down_hits=down_hits+1 where down_filename='".$this->db->escape_str($file)."'");
     }

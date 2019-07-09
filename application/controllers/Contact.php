@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       if(md5($captcha)==$this->session->userdata('keycode')){
         $this->session->unset_userdata('keycode');
         $this->db->insert('inbox', $datadb);
-        $this->session->set_flashdata('info','Thankyou, your message has been sent, we will follow up on this.');
+        $this->session->set_flashdata('info','<i class="fas fa-check"></i> Thankyou, your message has been sent, we will follow up on this.');
         redirect('contact');
       }else{
         $this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Upss.. something is wrong, please check again.');
