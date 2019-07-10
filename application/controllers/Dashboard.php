@@ -215,9 +215,49 @@ class Dashboard extends CI_Controller {
 // ======================== FILE MANAGER ================================
 	function filemanager() {
 		$data['title'] 			= 'Admin | File Manager';
-		$data['main_view'] = 'admin/filemanager/index';
+		$data['main_view'] 	= 'admin/filemanager/index';
+		$data['ar']    			= $this->demo_model->loadFilemanager();
 		$this->load->view('admin/templates/index', $data);
 	}
+	function add_filemanager() {
+		if (isset($_POST['submit'])){
+			$this->demo_model->filemanager_add();
+			$this->session->set_flashdata('success','<i class="fas fa-exclamation-circle"></i> Okey File added successfully..');
+			redirect('dashboard/filemanager');
+		}else{
+			$data['title']      = 'Admin | Add Filemanager';
+			$data['main_view']  = 'admin/filemanager/add';
+			$this->load->view('admin/templates/index', $data);
+		}
+	}
+	function change_filemanager() {
+		$id = $this->uri->segment(3);
+		if (isset($_POST['submit'])){
+			$this->demo_model->filemanager_update();
+			$this->session->set_flashdata('info','<i class="fas fa-exclamation-circle"></i> Okey file has been changed..');
+			redirect('dashboard/filemanager');
+		}else{
+			$data['title']      = 'Admin | Manage Filemanager';
+			$data['main_view']  = 'admin/filemanager/change';
+			$data['ar'] 				= $this->demo_model->filemanager_edit($id)->row_array();
+			$this->load->view('admin/templates/index', $data);
+		}
+	}
+
+	function remove_filemanager(){
+		$id = $this->uri->segment(3);
+		$this->demo_model->delete_filemanager($id);
+		$this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Okey file removed..');
+		redirect('dashboard/filemanager');
+	}
+
+
+
+
+
+
+
+
 
 	// ======================== DOWNLOAD ================================
 	function download() {

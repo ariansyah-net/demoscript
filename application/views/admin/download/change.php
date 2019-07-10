@@ -5,6 +5,7 @@
 <div class="collapse show" id="collapseCardExample">
   <div class="card-body">
     <?= form_open_multipart('dashboard/add_download') ?>
+    <input type='hidden' name='id' value='$ar['id_download']'>
 
 <!-- TITLE NAME -->
     <div class="form-group row">

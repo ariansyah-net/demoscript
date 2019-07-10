@@ -11,7 +11,7 @@
   <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
     <h6 class="dropdown-header">Message Center</h6>
       <?php
-        $pesan = $this->demo_model->new_message(10);
+        $pesan = $this->demo_model->new_message(4);
         foreach ($pesan->result_array() as $row) {
           $msg = substr($row['inbox_message'],0,35);
           $time = cek_terakhir($row['inbox_date'].' '.$row['inbox_time']);

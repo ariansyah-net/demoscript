@@ -1,4 +1,3 @@
-<button onclick="sweet()">Sweet Alert</button>
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary"><?= anchor('dashboard/add_demoscript', '<i class="fas fa-edit"></i> Add New', array('class' =>'btn btn-success btn-sm'))?></h6>
@@ -42,9 +41,20 @@
     </div>
   </div>
 </div>
+<button class="btn btn-primary" onclick="sweet()">Switch Alert</button>
 
 <script>
 function sweet (){
-swal("Good job!", "You clicked the button!", "success");
+
+// swal("Auah Gelap", "Ngantuk pala gua dengerin orang berantem!", "info");
+
+swal("Perut ane perih belom madang", {
+  icon: "warning",
+  title: "SABAR YA GAN",
+  button: {
+    text: "Ane Ngopi Dulu",
+  },
+});
+
 }
 </script>

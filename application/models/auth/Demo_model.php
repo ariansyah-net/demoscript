@@ -214,7 +214,6 @@
 
     function loadAuthor() {
       return $this->db->query("SELECT * FROM auth ORDER BY id_auth DESC");
-
     }
     function author_add(){
       $config['upload_path'] = 'asset/img/';
@@ -301,7 +300,7 @@
     }
 
 
-    // Download
+//========================== DOWNLOAD =========================================
 
     function download_add(){
       $config['upload_path'] = 'asset/files/';
@@ -341,6 +340,71 @@
       $this->db->delete('download', array('id_download' => $id));
       unlink("./asset/files/$ar->down_filename");
   }
+
+// =================== FILE MANAGER ==============================
+  function loadFilemanager() {
+    return $this->db->query("SELECT * FROM filemanager ORDER BY id_filemanager DESC");
+  }
+  function filemanager_add(){
+        $config['upload_path'] = 'asset/source/';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|raw|bmp|GIF|JPG|JPEG|PNG|zip|rar|pdf|doc|docx|ppt|pptx|xls|xlsx|txt|psd|cdr|ai|svg|eps';
+        $config['max_size'] = '25000'; // kb
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('u');
+        $hasil=$this->upload->data();
+            if ($hasil['file_name']==''){
+                $datadb = array('f_name'     => $this->db->escape_str($this->input->post('a')),
+                                'f_type'     => $hasil['file_type'],
+                                'f_size'     => $hasil['file_size'],
+                                'f_date'     => date('Y-m-d')
+                                );
+            }else{
+            		$datadb = array('f_name'     => $this->db->escape_str($this->input->post('a')),
+                                'f_filename' => $hasil['file_name'],
+                                'f_type'     => $hasil['file_type'],
+                                'f_size'     => $hasil['file_size'],
+                                'f_date'     => date('Y-m-d')
+                                );
+            }
+        $this->db->insert('filemanager',$datadb);
+    }
+
+
+    function filemanager_edit($id){
+        return $this->db->query("SELECT * FROM filemanager where id_filemanager='$id'");
+    }
+
+    function filemanager_update(){
+      $config['upload_path'] = 'asset/source/';
+      $config['allowed_types'] = 'gif|jpg|jpeg|png|raw|bmp|GIF|JPG|JPEG|PNG|zip|rar|pdf|doc|docx|ppt|pptx|xls|xlsx|txt|psd|cdr|ai|svg|eps';
+      $config['max_size'] = '25000'; // kb
+      $this->load->library('upload', $config);
+      $this->upload->do_upload('u');
+
+      $hasil=$this->upload->data();
+          if ($hasil['file_name']==''){
+                  $datadb = array('f_name'     => $this->db->escape_str($this->input->post('a')),
+                                  'f_date'     => date('Y-m-d')
+                                  );
+          }elseif ($hasil['file_name']!=''){
+                  $datadb = array('f_name'     => $this->db->escape_str($this->input->post('a')),
+                                  'f_filename' => $hasil['file_name'],
+                                  'f_type'     => $hasil['file_type'],
+                                  'f_size'     => $hasil['file_size'],
+                                  'f_date'     => date('Y-m-d')
+                                  );
+          }
+          $this->db->where('id_filemanager',$this->input->post('id'));
+          $this->db->update('filemanager',$datadb);
+    }
+
+    function delete_filemanager($id){
+        $this->db->where('id_filemanager',$id);
+        $query = $this->db->get('filemanager');
+        $ar = $query->row();
+        $this->db->delete('filemanager', array('id_filemanager' => $id));
+        unlink("./asset/source/$ar->f_filename");
+    }
 
 
 }
