@@ -30,6 +30,8 @@
         <a class="collapse-item" href="<?=base_url('dashboard/filemanager')?>">File Manager</a>
         <a class="collapse-item" href="<?=base_url('dashboard/inbox')?>">Messages</a>
         <a class="collapse-item" href="<?=base_url('dashboard/download')?>">Download</a>
+        <a class="collapse-item" href="<?=base_url('dashboard/page')?>">Page List</a>
+
       </div>
     </div>
   </li>
