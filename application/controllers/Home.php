@@ -9,6 +9,7 @@ class Home extends MY_Controller {
                                                ->paginate($page)->getAll();
       	$jml          			= $this->home_model->getAll();
       	$total        			= count($jml);
+        // $data['title']      = $this->db->get_where('settings', 'site_name')->result();
       	$data['main_view']  = 'demo/index';
       	$data['pagination'] = $this->home_model->makePagination(site_url('home'), 2, $total);
       	$this->load->view('_template', $data);
