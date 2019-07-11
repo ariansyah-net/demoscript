@@ -1,6 +1,5 @@
 <div class="jumbotron pt-5">
 <div class="container">
-
 <div class="table-responsive-sm">
   <table class="table table-bordered">
     <thead>
@@ -23,7 +22,7 @@
           <td>$row[down_title]</td>
           <td>$row[down_typefile]</td>
           <td>$date</td>
-          <td align='center'><a class='btn btn-outline-success btn-sm btn-block'>$row[down_hits]</a></td>
+          <td align='center'><a class='btn btn-outline-default btn-sm btn-block'>$row[down_hits]</a></td>
           <td style='width:80px;'>
           <a class='btn btn-outline-default btn-sm btn-block text-primary' title='download' href='".base_url('download/files/')."$row[down_filename]'> <i class='fas fa-download'></i> </a>
           </td>

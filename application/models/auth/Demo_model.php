@@ -328,6 +328,33 @@
           }
       $this->db->insert('download', $datadb);
   }
+  function download_update(){
+    $config['upload_path'] = 'asset/files/';
+    $config['allowed_types'] = 'gif|jpg|jpeg|png|raw|bmp|GIF|JPG|JPEG|PNG|zip|rar|csv|cdr|mp3|mp4|mkv|mpeg|pdf|doc|docx|ppt|pptx|xls|xlsx|txt|psd|cdr|ai|svg|eps';
+    $config['max_size'] = '10000'; // kb
+    $config['encrypt_name'] = true;
+    $this->load->library('upload', $config);
+    $this->upload->do_upload('ar');
+    $hasil=$this->upload->data();
+        if ($hasil['file_name']==''){
+                $datadb = array('down_title'        => $this->db->escape_str($this->input->post('a')),
+                                'down_typefile'     => $this->db->escape_str($this->input->post('b')),
+                                'down_hits'         => $this->db->escape_str($this->input->post('c')),
+                                'down_active'       => $this->db->escape_str($this->input->post('d')),
+                                'down_date'         => date('Y-m-d')
+                                );
+        }else{
+                $datadb = array('down_title'        => $this->db->escape_str($this->input->post('a')),
+                                'down_typefile'     => $this->db->escape_str($this->input->post('b')),
+                                'down_hits'         => $this->db->escape_str($this->input->post('c')),
+                                'down_active'       => $this->db->escape_str($this->input->post('d')),
+                                'down_date'         => date('Y-m-d'),
+                                'down_filename'     => $hasil['file_name']
+                                );
+        }
+        $this->db->where('id_download',$this->input->post('id'));
+        $this->db->update('download',$datadb);
+}
 
   function download_edit($id){
       return $this->db->query("SELECT * FROM download where id_download='$id'");
@@ -406,5 +433,72 @@
         unlink("./asset/source/$ar->f_filename");
     }
 
+// ======================= PAGE LIST ==============================
 
+    function page_add(){
+          $config['upload_path'] = 'asset/img/';
+          $config['allowed_types'] = 'gif|jpg|jpeg|png|GIF|JPG|JPEG|PNG';
+          $config['max_size'] = '1028'; // kb
+          $this->load->library('upload', $config);
+          $this->upload->do_upload('e');
+          $hasil=$this->upload->data();
+              if ($hasil['file_name']==''){
+                  $datadb = array('page_title'    => $this->db->escape_str($this->input->post('a')),
+                                  'page_slug'     => slug($this->input->post('a')),
+                                  'page_content'  => $this->input->post('b'),
+                                  'page_hits'     => $this->db->escape_str($this->input->post('c')),
+                                  'page_active'   => $this->db->escape_str($this->input->post('d')),
+                                  'page_date'     => date('Y-m-d')
+                                  );
+              }else{
+                  $datadb = array('page_title'    => $this->db->escape_str($this->input->post('a')),
+                                  'page_slug'     => slug($this->input->post('a')),
+                                  'page_content'  => $this->input->post('b'),
+                                  'page_hits'     => $this->db->escape_str($this->input->post('c')),
+                                  'page_active'   => $this->db->escape_str($this->input->post('d')),
+                                  'page_date'     => date('Y-m-d'),
+                                  'page_img'      => $hasil['file_name']
+                                  );
+              }
+          $this->db->insert('page',$datadb);
+      }
+
+      function page_update(){
+        $config['upload_path'] = 'asset/img/';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png|GIF|JPG|JPEG|PNG';
+        $config['max_size'] = '1028'; // kb
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('e');
+        $hasil=$this->upload->data();
+            if ($hasil['file_name']==''){
+                $datadb = array('page_title'    => $this->db->escape_str($this->input->post('a')),
+                                'page_slug'     => slug($this->input->post('a')),
+                                'page_content'  => $this->input->post('b'),
+                                'page_hits'     => $this->db->escape_str($this->input->post('c')),
+                                'page_active'   => $this->db->escape_str($this->input->post('d')),
+                                'page_date'     => date('Y-m-d')
+                                );
+            }else{
+                $datadb = array('page_title'    => $this->db->escape_str($this->input->post('a')),
+                                'page_slug'     => slug($this->input->post('a')),
+                                'page_content'  => $this->input->post('b'),
+                                'page_hits'     => $this->db->escape_str($this->input->post('c')),
+                                'page_active'   => $this->db->escape_str($this->input->post('d')),
+                                'page_date'     => date('Y-m-d'),
+                                'page_img'      => $hasil['file_name']
+                                );
+            }
+            $this->db->where('id_page',$this->input->post('id'));
+            $this->db->update('page',$datadb);
+      }
+      function page_edit($id){
+        return $this->db->query("SELECT * FROM page where id_page='$id'");
+      }
+      function delete_page($id){
+          $this->db->where('id_page',$id);
+          $query = $this->db->get('page');
+          $ar = $query->row();
+          $this->db->delete('page', array('id_page' => $id));
+          unlink("./asset/img/$ar->page_img");
+      }
 }

@@ -211,7 +211,6 @@ class Dashboard extends CI_Controller {
 		redirect('dashboard/author');
 	}
 
-
 // ======================== FILE MANAGER ================================
 	function filemanager() {
 		$data['title'] 			= 'Admin | File Manager';
@@ -251,14 +250,6 @@ class Dashboard extends CI_Controller {
 		redirect('dashboard/filemanager');
 	}
 
-
-
-
-
-
-
-
-
 	// ======================== DOWNLOAD ================================
 	function download() {
 		$data['title'] 			= 'Admin | Download';
@@ -296,5 +287,47 @@ class Dashboard extends CI_Controller {
 		$this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Okey file removed..');
 		redirect('dashboard/download');
 	}
+
+// ======================= PAGE LIST ==============================
+
+	function page() {
+		$data['title'] 			= 'Admin | Page';
+		$data['main_view'] 	= 'admin/page/index';
+		$data['ar']    			= $this->db->get('page');
+		$this->load->view('admin/templates/index', $data);
+	}
+	function add_page() {
+		if (isset($_POST['submit'])){
+			$this->demo_model->page_add();
+			$this->session->set_flashdata('success','<i class="fas fa-exclamation-circle"></i> Okey page list added successfully..');
+			redirect('dashboard/page');
+		}else{
+			$data['title']      = 'Admin | Add Page';
+			$data['main_view']  = 'admin/page/add';
+			$this->load->view('admin/templates/index', $data);
+		}
+	}
+	function change_page() {
+		$id = $this->uri->segment(3);
+		if (isset($_POST['submit'])){
+			$this->demo_model->page_update();
+			$this->session->set_flashdata('info','<i class="fas fa-exclamation-circle"></i> Okey page list has been changed..');
+			redirect('dashboard/page');
+		}else{
+			$data['title']      = 'Admin | Cange Page List';
+			$data['main_view']  = 'admin/page/change';
+			$data['ar'] 				= $this->demo_model->page_edit($id)->row_array();
+			$this->load->view('admin/templates/index', $data);
+		}
+	}
+	function remove_page(){
+		$id = $this->uri->segment(3);
+		$this->demo_model->delete_page($id);
+		$this->session->set_flashdata('danger','<i class="fas fa-exclamation-circle"></i> Okey page removed..');
+		redirect('dashboard/page');
+	}
+
+
+
 
 }
