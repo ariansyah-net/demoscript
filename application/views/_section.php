@@ -1,4 +1,4 @@
-<section class="jumbotron text-center mb-0">
+<section class="bg-light text-center pb-5 pt-5">
   <div class="container">
     <h1 class="jumbotron-heading"><i class="fab fa-linux"></i> DemoScript</h1>
     <p class="lead text-muted"> Powered by <a href="https://ariansyah.net" target="_blank">www.ariansyah.net</a> </p>
