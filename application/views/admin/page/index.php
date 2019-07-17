@@ -18,10 +18,11 @@
           <?php
               $no = 1;
               foreach ($ar->result_array() as $row){
+              $msg = substr($row['page_content'],0,80);
               echo "<tr>
               <td align='center' style='width:40px;'>$no</td>
-              <td>$row[page_title]</td>
-              <td>$row[page_content]</td>
+              <td><a target='_blank' href='".base_url('page/')."$row[page_slug]'>$row[page_title]</a></td>
+              <td><code>$msg ..</code></td>
               <td style='width:105px'>";
               if ($row['page_active']=='Y'){
                 $ar = '<button type="button" class="btn btn-default btn-sm text-secondary"><i class="fas fa-check-circle"></i> Active </button>';

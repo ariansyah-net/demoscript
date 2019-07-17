@@ -59,7 +59,13 @@
     <div class="form-group row">
     <?= form_label('', '', ['class' => 'col-sm-2 col-form-label']) ?>
     <div class="col-sm-5">
-    <a href="<?=base_url('asset/img/'.$ar['page_img'].' ') ?>" target="_blank"><img class="img-fluid img-thumbnail" style="max-width:150px;" src="<?=base_url('asset/img/'.$ar['page_img'].' ') ?>"></a>
+    <?php
+    if($ar['page_img'] == ''){
+      echo "<img class='img-fluid img-thumbnail' style='max-width:150px;' src='".base_url()."asset/img/noimage.png'> ";
+    } else {
+      echo "<a href='".base_url()."asset/img/$ar[page_img]'><img class='img-fluid img-thumbnail' style='max-width:150px;' src='".base_url()."asset/img/$ar[page_img]'></a>";
+    }
+    ?>
     </div>
     </div>
 

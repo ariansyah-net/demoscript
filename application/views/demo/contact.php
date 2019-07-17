@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="container mt-5">
 <div class="row">
 <div class="col-7">
 <div class="embed-responsive embed-responsive-4by3">
@@ -35,7 +35,5 @@
   <?= form_button(['type' => 'submit', 'content' => '<i class="fas fa-paper-plane"></i> Send Message', 'class' => 'btn btn-danger']) ?>
   <?= form_close() ?>
   </div>
-
-
 
 </div>

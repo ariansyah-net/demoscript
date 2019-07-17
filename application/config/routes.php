@@ -54,5 +54,8 @@ $route['404_override'] = 'Notfound';
 $route['translate_uri_dashes'] = FALSE;
 
 // Aditional Set
+$route['page/(:any)'] = 'page/index/$1';
 $route['home/(:num)'] = 'home/index/$1';
+$route['download/(:num)'] = 'download/index/$1';
+
 $route['logout'] = 'ar503/logout';

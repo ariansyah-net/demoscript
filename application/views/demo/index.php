@@ -11,7 +11,7 @@ if (isset($cat)) {
 <main role="main">
 
 <?php if ($ar): ?>
-<div class="album bg-light">
+<div class="album mt-4">
 <div class="container">
 
 <div class="row">
@@ -44,16 +44,13 @@ if (isset($cat)) {
 </div>
 
 <div class="py-4">
-	<?php if ($pagination): ?>
-		<?= $pagination ?>
-  </div>
-	<?php else: ?>&nbsp;<?php endif ?>
+<?php if ($pagination): ?>
+<?= $pagination ?>
+</div>
+<?php else: ?>&nbsp;<?php endif ?>
 
 <?php else: ?>
-
 <div class="jumbotron text-center danger"><i class="fas fa-exclamation-circle"></i> Sorry, content is under repair.</div>
-
-  </div>
+</div>
 </main>
-
 <?php endif ?>

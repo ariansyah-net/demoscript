@@ -49,10 +49,11 @@ class Home_model extends MY_Model
 	function updateview($id){
       return $this->db->query("UPDATE home SET content_hits=content_hits+1 WHERE content_slug='".$this->db->escape_str($id)."' OR id_content='".$this->db->escape_str($id)."'");
   }
-
-	function updatehits($file){
-        return $this->db->query("UPDATE download set down_hits=down_hits+1 where down_filename='".$this->db->escape_str($file)."'");
-    }
-
+	// function updatehits($file){
+  //     return $this->db->query("UPDATE download set down_hits=down_hits+1 where down_filename='".$this->db->escape_str($file)."'");
+  // }
+	function updatepagehits($id){
+			return $this->db->query("UPDATE page SET page_hits=page_hits+1 WHERE page_slug='".$this->db->escape_str($id)."' OR id_page='".$this->db->escape_str($id)."'");
+	}
 
 }
