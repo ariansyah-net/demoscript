@@ -36,7 +36,6 @@ class Ar503 extends CI_Controller {
 	{
 			$this->login->logout();
 			redirect(base_url());
-			// $this->session->set_flashdata('info', '<i class="fas fa-exclamation-triangle"></i> Good Bye and se you next time..');
 	}
 
 

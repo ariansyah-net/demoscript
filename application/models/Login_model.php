@@ -71,8 +71,8 @@ class Login_model extends MY_Model
 					'ar_login' 	=> null
 			];
 			$this->session->unset_userdata($data);
-			$this->session->sess_destroy();
 			// $this->session->set_flashdata('info', '<i class="fas fa-exclamation-triangle"></i> Good Bye and se you next time..');
+			$this->session->sess_destroy();
 	}
 
 

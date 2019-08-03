@@ -1,1 +1,9 @@
-s
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body,
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+} */

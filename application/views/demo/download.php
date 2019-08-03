@@ -45,7 +45,7 @@ $i = isset($page) ? $page * $perPage - $perPage : 0;
 
 <?php else: ?>&nbsp;<?php endif ?>
 <?php else: ?>
-<div class="jumbotron text-center danger"><i class="fas fa-exclamation-circle"></i> Sorry, No file available yet to download.</div>
+<div class="jumbotron text-center text-danger"><i class="fas fa-exclamation-circle"></i> Sorry, no file available yet to download.</div>
 </div>
 <?php endif ?>
 </div>

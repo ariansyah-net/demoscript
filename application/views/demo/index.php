@@ -20,11 +20,11 @@ if (isset($cat)) {
 <div class="card m-2" style="width: 22rem;">
 <a target="_blank" href="<?=base_url('home/detail')?>/<?= $hh->content_slug ?>">
 
-  <?php if (!empty($hh->content_img)): ?>
-    <img src="<?= site_url("asset/post/$hh->content_img") ?>" class="card-img-top">
-  <?php else: ?> <img src="<?= site_url("asset/post/noimage.png") ?>" class="card-img-top">
-  			<?php endif ?>
-  		    </a>
+<?php if (!empty($hh->content_img)): ?>
+  <img src="<?= site_url("asset/post/$hh->content_img") ?>" class="card-img-top">
+    <?php else: ?> <img src="<?= site_url("asset/post/noimage.png") ?>" class="card-img-top">
+			<?php endif ?>
+		    </a>
 
 <div class="card-body">
 <h5 class="card-title"><a target="_blank" href="<?=base_url('home/detail')?>/<?= $hh->content_slug ?>"><?= $hh->content_title ?></a></h5>
@@ -50,7 +50,7 @@ if (isset($cat)) {
 <?php else: ?>&nbsp;<?php endif ?>
 
 <?php else: ?>
-<div class="jumbotron text-center danger"><i class="fas fa-exclamation-circle"></i> Sorry, content is under repair.</div>
+<div class="jumbotron text-center text-danger"><i class="fas fa-exclamation-circle"></i> Sorry, content is under repair.</div>
 </div>
 </main>
 <?php endif ?>
